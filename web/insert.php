@@ -1,8 +1,8 @@
 <?php
 	$host='localhost';
-	$uname='ni104627_3sql1';
+	$uname='INSERT USERNAME';
 	$pwd='PASSWORD HERE';
-	$db="ni104627_3sql1";
+	$db="INSERT DATABASE";
 
 	$con = mysqli_connect($host,$uname,$pwd,$db);
 	 
