@@ -1,0 +1,341 @@
+*************************************************************
+FileName = main.GBR
+AutoAperture = True
+*************************************************************
+Generating : Top Layer
+      File : main.GTL
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D10
+    D11
+    D12
+    D13
+    D14
+    D15
+    D16
+    D17
+*************************************************************
+
+*************************************************************
+Generating : Bottom Layer
+      File : main.GBL
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D11
+    D12
+    D13
+    D14
+    D15
+    D16
+    D17
+*************************************************************
+
+*************************************************************
+Generating : Top Paste
+      File : main.GTP
+
+    Adding Layer      : Top Paste
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D10
+*************************************************************
+
+*************************************************************
+Generating : Top Overlay
+      File : main.GTO
+
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+*************************************************************
+
+*************************************************************
+Generating : Top Solder
+      File : main.GTS
+
+    Adding Layer      : Top Solder
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+*************************************************************
+
+*************************************************************
+Generating : Bottom Solder
+      File : main.GBS
+
+    Adding Layer      : Bottom Solder
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+*************************************************************
+
+*************************************************************
+Generating : Bottom Overlay
+      File : main.GBO
+
+    Adding Layer      : Bottom Overlay
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Bottom Paste
+      File : main.GBP
+
+    Adding Layer      : Bottom Paste
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Keep-Out Layer
+      File : main.GKO
+
+    Adding Layer      : Keep-Out Layer
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Outline
+      File : main.Outline
+
+    Adding Layer      : Outline
+
+
+Used DCodes :
+    D18
+    D33
+*************************************************************
+
+*************************************************************
+Generating : Assembly Text Top
+      File : main.Assembly Text Top
+
+    Adding Layer      : Assembly Text Top
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Assembly Text Bottom
+      File : main.Assembly Text Bottom
+
+    Adding Layer      : Assembly Text Bottom
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Assembly Top
+      File : main.Assembly Top
+
+    Adding Layer      : Assembly Top
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Assembly Bottom
+      File : main.Assembly Bottom
+
+    Adding Layer      : Assembly Bottom
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Dimensions Top
+      File : main.Dimensions Top
+
+    Adding Layer      : Dimensions Top
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Dimensions Bottom
+      File : main.Dimensions Bottom
+
+    Adding Layer      : Dimensions Bottom
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : 3D Top
+      File : main.3D Top
+
+    Adding Layer      : 3D Top
+
+
+Used DCodes :
+    D18
+    D34
+*************************************************************
+
+*************************************************************
+Generating : 3D Bottom
+      File : main.3D Bottom
+
+    Adding Layer      : 3D Bottom
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Courtyard Top
+      File : main.Courtyard Top
+
+    Adding Layer      : Courtyard Top
+
+
+Used DCodes :
+    D18
+    D21
+    D34
+    D35
+*************************************************************
+
+*************************************************************
+Generating : Courtyard Bottom
+      File : main.Courtyard Bottom
+
+    Adding Layer      : Courtyard Bottom
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Test Points Top
+      File : main.Test Points Top
+
+    Adding Layer      : Test Points Top
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Test Points Bottom
+      File : main.Test Points Bottom
+
+    Adding Layer      : Test Points Bottom
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Multi-Layer
+      File : main.GML
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D12
+    D13
+    D14
+    D15
+    D16
+*************************************************************
+
+*************************************************************
+Generating : Dielectric 1
+      File : main.1
+
+    Adding Layer      : Dielectric 1
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Drill Drawing
+      File : main.GD1
+
+    Adding Drill Pair : Top Layer-Bottom Layer
+
+    Adding Layer      : Drill Drawing
+
+
+Used DCodes :
+    D36
+    D37
+*************************************************************
+
+*************************************************************
+Generating : Drill Guide
+      File : main.GG1
+
+    Adding Drill Pair : Top Layer-Bottom Layer
+
+    Adding Layer      : Drill Guide
+
+
+Used DCodes :
+    D36
+*************************************************************
+

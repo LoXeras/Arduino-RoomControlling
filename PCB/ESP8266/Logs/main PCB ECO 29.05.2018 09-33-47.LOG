@@ -1,0 +1,15 @@
+Added Component: Designator=R10(RESC2013X70X40LL20T20)
+Added Pin To Net: NetName=SDA Pin=U?-17
+Added Pin To Net: NetName=SCL Pin=U?-18
+Added Pin To Net: NetName=GND Pin=U?-22
+Added Pin To Net: NetName=VCC Pin=U?-30
+Added Pin To Net: NetName=NetLED?_1 Pin=LED?-1
+Added Pin To Net: NetName=NetLED?_1 Pin=U?-29
+Added Net: Name=NetLED?_1
+Added Pin To Net: NetName=NetLED?_2 Pin=LED?-2
+Added Pin To Net: NetName=NetLED?_2 Pin=R10-2
+Added Net: Name=NetLED?_2
+Added Pin To Net: NetName=NetR10_1 Pin=R10-1
+Added Pin To Net: NetName=NetR10_1 Pin=U?-25
+Added Net: Name=NetR10_1
+Added Member To Class: ClassName=main Member=Component R10 5.6k
