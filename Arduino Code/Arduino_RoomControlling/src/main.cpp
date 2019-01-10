@@ -21,7 +21,7 @@ const char* host = "loxeras.com";
 
 
 OLED display(D1, D2);
-
+int value = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -59,10 +59,6 @@ void setup() {
  Serial.println(WiFi.subnetMask());
  Serial.print("Gateway: ");
  Serial.println(WiFi.gatewayIP());
-
-
-
-
 }
 
 void loop() {
