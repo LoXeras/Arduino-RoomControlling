@@ -9,20 +9,60 @@
 #include <ESP8266WiFi.h>
 #include <Wire.h>
 #include <stdlib.h>
+#include <OLED.h>
 
-#define HYT_ADDR 0x28     // I2C address of the HYT 939
+#define HYT_ADDR 0x28       // I2C address of the HYT 939
 
-const char* wlan_ssid = "Virus_Distribution_Center";				//WLAN SSID
-const char* wlan_password = "-";									//Password
+const char* wlan_ssid = "P20";				//WLAN SSID
+const char* wlan_password = "ZorK0717";									         //Password
 
 //MYSQL Host
 const char* host = "loxeras.com";
 
 
+OLED display(D1, D2);
+
+
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(9600);
-  Serial.printf("HELLO\n" );
+
+  delay(100);
+
+  Wire.begin(D1, D2);            // Join I2c Bus as master
+
+  digitalWrite(LED_BUILTIN, HIGH);  // Turn the LED off by making the voltage HIGH
+
+  // Initialize display
+ display.begin();
+
+
+
+
+ Serial.println();
+ Serial.println();
+ Serial.print("Connecting to ");
+ Serial.println(wlan_ssid);
+
+ WiFi.begin(wlan_ssid, wlan_password);
+
+ while (WiFi.status() != WL_CONNECTED) {
+   delay(500);
+   Serial.print(".");
+ }
+
+ Serial.println("");
+ Serial.println("WiFi connected");
+ display.print("WiFi connected");
+ Serial.print("IP address: ");
+ Serial.println(WiFi.localIP());
+ Serial.print("Netmask: ");
+ Serial.println(WiFi.subnetMask());
+ Serial.print("Gateway: ");
+ Serial.println(WiFi.gatewayIP());
+
+
+
+
 }
 
 void loop() {
