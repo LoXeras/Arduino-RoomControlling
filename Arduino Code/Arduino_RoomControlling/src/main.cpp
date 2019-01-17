@@ -16,8 +16,12 @@
 const char* wlan_ssid = "P20";				//WLAN SSID
 const char* wlan_password = "ZorK0717";									         //Password
 
+
 //MYSQL Host
 const char* host = "loxeras.com";
+const int httpPort = 80;
+
+double temperature, humidity;
 
 
 OLED display(D1, D2);
@@ -25,9 +29,63 @@ int value = 0;
 
 
 
+void writeDatabase(double humidity, double temperature){
+    // Use WiFiClient class to create TCP connections
+    WiFiClient client;
+
+    if (!client.connect(host, httpPort)) {
+      Serial.println("connection failed");
+      return;
+    }
+
+
+
+
+    // create URI for request
+    // https://shuttle.quecksilber.ch
+    // /api/insert.php
+    char buffer[10];
+  //  dtostrf(temperature, 5, 2, buffer);
+
+    String trash = "&trash=1";
+
+    String room = "99";
+
+    String url = "/api/insert.php?r="+room+"&h="+humidity+"&t="+temperature+trash;
+  //  url.concat(buffer);
+    Serial.print("Requesting URL: ");
+    Serial.println(url);
+
+    // send request to server
+    client.print(String("GET ") + url + " HTTP/1.1\r\n" +
+                 "Host: " + host + "\r\n" +
+                 "Connection: close\r\n\r\n");
+
+    delay(500);
+
+
+    // Read all the lines of the reply from server and print them to Serial
+    while (client.available()) {
+      String line = client.readStringUntil('\r');
+      Serial.print(line);
+    }
+
+    Serial.println();
+    if (!client.connect(host, httpPort)) {
+      Serial.println("connection failed");
+      return;
+    }
+
+    Serial.println();
+    Serial.println("closing connection");
+
+
+
+}
+
 void readData(void){
-  double humidity;
-  double temperature;
+  //double humidity;
+  //double temperature;
 
 
   Wire.beginTransmission(HYT_ADDR);   // Begin transmission with the HYT module
@@ -56,16 +114,14 @@ void readData(void){
     int rawTemperature = b3 << 6 | b4;
     temperature = 165.0 / pow(2, 14) * rawTemperature - 40;  //Calculate temperature in °C
 
-    Serial.print("Humidity: ");
-    Serial.print(humidity);
-    Serial.print("% - Temperature: ");
-    Serial.println(temperature);
+  //  Serial.print("Humidity: ");
+  //  Serial.print(humidity);
+  //  Serial.print("% - Temperature: ");
+  //  Serial.println(temperature);
   }
   else {
     Serial.println("Not enough bytes available.");
   }
-
-
 
 }
 
@@ -80,7 +136,7 @@ void setup() {
 
   // Initialize display
  display.begin();
- 
+
  Serial.println();
  Serial.println();
  Serial.print("Connecting to ");
@@ -108,5 +164,16 @@ void setup() {
 
 void loop() {
   readData();
-  delay(5000);
+//  delay(5000);
+
+  Serial.print("Humidity: ");
+  Serial.print(humidity);
+  Serial.print("% - Temperature: ");
+  Serial.println(temperature);
+
+
+  writeDatabase(humidity,temperature);
+  Serial.println("Going into deep sleep for 5 seconds");
+  ESP.deepSleep(5e6); // 5e6 are 5'000'000 microseconds
+
 }
