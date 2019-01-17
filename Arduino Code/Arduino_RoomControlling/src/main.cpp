@@ -23,6 +23,52 @@ const char* host = "loxeras.com";
 OLED display(D1, D2);
 int value = 0;
 
+
+
+void readData(void){
+  double humidity;
+  double temperature;
+
+
+  Wire.beginTransmission(HYT_ADDR);   // Begin transmission with the HYT module
+  Wire.requestFrom(HYT_ADDR, 4);      // Request 4 bytes
+
+  // Read the bytes if they are available
+  //Byte 1 and 2 = Humidity, 3 and 4 = temperaturee
+  if (Wire.available() == 4) {
+    int b1 = Wire.read();
+    int b2 = Wire.read();
+    int b3 = Wire.read();
+    int b4 = Wire.read();
+
+    Wire.endTransmission();           // End transmission, release I2C bus
+
+    // combine the two humidity bytes
+    //calculate humidity
+    int rawHumidity = b1 << 8 | b2;
+    // compound bitwise to get 14 bit measurement, first two bits  are status/stall bit
+    rawHumidity =  (rawHumidity &= 0x3FFF);
+    humidity = 100.0 / pow(2, 14) * rawHumidity; //calculate humidity
+
+
+    // combine temperature bytes and calculate temperature
+    b4 = (b4 >> 2); // Mask away 2 least significant bits see HYT 221 doc
+    int rawTemperature = b3 << 6 | b4;
+    temperature = 165.0 / pow(2, 14) * rawTemperature - 40;  //Calculate temperature in °C
+
+    Serial.print("Humidity: ");
+    Serial.print(humidity);
+    Serial.print("% - Temperature: ");
+    Serial.println(temperature);
+  }
+  else {
+    Serial.println("Not enough bytes available.");
+  }
+
+
+
+}
+
 void setup() {
   Serial.begin(9600);
 
@@ -34,10 +80,7 @@ void setup() {
 
   // Initialize display
  display.begin();
-
-
-
-
+ 
  Serial.println();
  Serial.println();
  Serial.print("Connecting to ");
@@ -59,8 +102,11 @@ void setup() {
  Serial.println(WiFi.subnetMask());
  Serial.print("Gateway: ");
  Serial.println(WiFi.gatewayIP());
+
+
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  readData();
+  delay(5000);
 }
