@@ -173,7 +173,7 @@ void loop() {
 
 
   writeDatabase(humidity,temperature);
-  Serial.println("Going into deep sleep for 5 seconds");
-  ESP.deepSleep(5e6); // 5e6 are 5'000'000 microseconds
+  Serial.println("Going into deep sleep for 10 seconds");
+  ESP.deepSleep(10e6); // 5e6 are 5'000'000 microseconds
 
 }
