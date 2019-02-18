@@ -42,7 +42,7 @@ void writeDatabase(double humidity, double temperature){
 
 
     // create URI for request
-    // https://shuttle.quecksilber.ch
+    // loxeras.com
     // /api/insert.php
     char buffer[10];
   //  dtostrf(temperature, 5, 2, buffer);
