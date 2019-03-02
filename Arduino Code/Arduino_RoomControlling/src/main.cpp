@@ -131,8 +131,6 @@ void setup() {
 
   digitalWrite(LED_BUILTIN, HIGH);  // Turn the LED off by making the voltage HIGH
 
-  // Initialize display
- display.begin();
 
  Serial.println();
  Serial.println();
