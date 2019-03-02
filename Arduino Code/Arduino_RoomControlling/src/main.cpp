@@ -22,9 +22,6 @@ const char* host = "loxeras.com";
 const int httpPort = 80;
 
 double temperature, humidity;
-
-
-OLED display(D1, D2);
 int value = 0;
 
 
@@ -151,7 +148,6 @@ void setup() {
 
  Serial.println("");
  Serial.println("WiFi connected");
- display.print("WiFi connected");
  Serial.print("IP address: ");
  Serial.println(WiFi.localIP());
  Serial.print("Netmask: ");
