@@ -14,7 +14,7 @@
 #define HYT_ADDR 0x28       // I2C address of the HYT 939
 
 const char* wlan_ssid = "P20";				//WLAN SSID
-const char* wlan_password = "ZorK0717";									         //Password
+const char* wlan_password = "RoomControlling";									         //Password
 
 
 //MYSQL Host
