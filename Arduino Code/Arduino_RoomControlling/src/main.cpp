@@ -9,22 +9,18 @@
 #include <ESP8266WiFi.h>
 #include <Wire.h>
 #include <stdlib.h>
-#include <OLED.h>
 
 #define HYT_ADDR 0x28       // I2C address of the HYT 939
 
-const char* wlan_ssid = "P20";				//WLAN SSID
-const char* wlan_password = "RoomControlling";									         //Password
+const char* wlan_ssid = "P20";			             //WLAN SSID
+const char* wlan_password = "RoomControlling";	 //Password
 
 
 //MYSQL Host
 const char* host = "loxeras.com";
 const int httpPort = 80;
 
-double temperature, humidity;
-int value = 0;
-
-
+double temperature, humidity; //Define As Global
 
 void writeDatabase(double humidity, double temperature){
     // Use WiFiClient class to create TCP connections
@@ -35,18 +31,14 @@ void writeDatabase(double humidity, double temperature){
       return;
     }
 
-
-
-
     // create URI for request
     // loxeras.com
     // /api/insert.php
-    char buffer[10];
-  //  dtostrf(temperature, 5, 2, buffer);
 
-    String trash = "&trash=1";
 
-    String room = "99";
+    String trash = "&trash=1"; //Trash for data error correction
+
+    String room = "99"; //RoomID
 
     String url = "/api/insert.php?r="+room+"&h="+humidity+"&t="+temperature+trash;
   //  url.concat(buffer);
@@ -76,15 +68,9 @@ void writeDatabase(double humidity, double temperature){
     Serial.println();
     Serial.println("closing connection");
 
-
-
 }
 
-void readData(void){
-  //double humidity;
-  //double temperature;
-
-
+void readData(void){ //Reads data from HYT939
   Wire.beginTransmission(HYT_ADDR);   // Begin transmission with the HYT module
   Wire.requestFrom(HYT_ADDR, 4);      // Request 4 bytes
 
@@ -131,19 +117,21 @@ void setup() {
 
   digitalWrite(LED_BUILTIN, HIGH);  // Turn the LED off by making the voltage HIGH
 
-
+//Print Serial Debug
  Serial.println();
  Serial.println();
  Serial.print("Connecting to ");
  Serial.println(wlan_ssid);
 
- WiFi.begin(wlan_ssid, wlan_password);
+ WiFi.begin(wlan_ssid, wlan_password);  //Open WIFI
 
+//Wait for connection
  while (WiFi.status() != WL_CONNECTED) {
    delay(500);
    Serial.print(".");
  }
 
+//Connections Debug Log
  Serial.println("");
  Serial.println("WiFi connected");
  Serial.print("IP address: ");
@@ -158,16 +146,16 @@ void setup() {
 
 void loop() {
   readData();
-//  delay(5000);
-
+// Serial Debug Log
   Serial.print("Humidity: ");
   Serial.print(humidity);
   Serial.print("% - Temperature: ");
   Serial.println(temperature);
 
+  writeDatabase(humidity,temperature); //Write to Database
 
-  writeDatabase(humidity,temperature);
-  Serial.println("Going into deep sleep for 10 seconds");
-  ESP.deepSleep(10e6); // 5e6 are 5'000'000 microseconds
+  //Sends the NODEMCU to deepsleep mode for 60 second, it will automatically reset and reconnect and send the Data
+  Serial.println("Going into deep sleep for 60 seconds");
+  ESP.deepSleep(60e6); // 60e6 are 60'000'000 microseconds
 
 }
